@@ -9,7 +9,7 @@
     </ol>
 @endsection
 @section('main-content')
-    {!! Form::open(['method'=>'POST','action'=>'AdminUsersController@store']) !!}
+    {!! Form::open(['method'=>'POST','action'=>'AdminUsersController@store','files'=>true]) !!}
         <div class="form-group">
             {!! Form::label('name','Name:') !!}
             {!! Form::text('name',null,['class'=>'form-control']) !!}
@@ -21,8 +21,12 @@
         </div>
         <div class="form-group">
             {!! Form::label('role_id','Role:') !!}
-            {!! Form::select('role_id',[''=>'Choose option'] + $roles ,null,['class'=>'form-control']) !!}
+            {!! Form::select('user_type',[''=>'Choose option'] + $roles ,null,['class'=>'form-control']) !!}
         </div>
+         <div class="form-group">
+             {!! Form::label('file','File image:') !!}
+             {!! Form::file('file',['class'=>'form-control']) !!}
+         </div>
         <div class="form-group">
             {!! Form::label('Password','Password:') !!}
             <div class="row">
@@ -38,4 +42,5 @@
             {!! Form::submit('Create User',['class'=>'form-control btn btn-primary']) !!}
         </div>
     {!! Form::close() !!}
+    @include('includes.errors')
 @endsection
