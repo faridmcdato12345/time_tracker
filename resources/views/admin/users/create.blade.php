@@ -24,8 +24,8 @@
             {!! Form::select('user_type',[''=>'Choose option'] + $roles ,null,['class'=>'form-control']) !!}
         </div>
          <div class="form-group">
-             {!! Form::label('file','File image:') !!}
-             {!! Form::file('file',['class'=>'form-control']) !!}
+             {!! Form::label('file','Upload image:') !!}
+             {!! Form::file('photo_id',['class'=>'form-control']) !!}
          </div>
         <div class="form-group">
             {!! Form::label('Password','Password:') !!}
