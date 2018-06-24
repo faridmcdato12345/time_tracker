@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use function strtoupper;
 
 class User extends Authenticatable
 {
@@ -33,5 +34,9 @@ class User extends Authenticatable
 
     public function photo(){
         return $this->belongsTo('App\Photo', 'photo_id');
+    }
+
+    public function getNameAttribute($name){
+        return strtoupper($name);
     }
 }
