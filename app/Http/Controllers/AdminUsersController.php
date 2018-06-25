@@ -13,7 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use function public_path;
 use function redirect;
+use function unlink;
 use function view;
 
 class AdminUsersController extends Controller
@@ -134,6 +136,7 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+        unlink(public_path()."\\".$user->photo->path);
         $user->delete();
         Session::flash('deleted_user',$user->name.' has been deleted');
         return redirect('admin/users');

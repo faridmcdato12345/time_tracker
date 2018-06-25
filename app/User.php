@@ -36,9 +36,9 @@ class User extends Authenticatable
         return $this->belongsTo('App\Photo', 'photo_id');
     }
 
-    public function getNameAttribute($name){
-        return strtoupper($name);
-    }
+//    public function getNameAttribute($name){
+//        return strtoupper($name);
+//    }
 
     public function isAdmin(){
         if($this->role->name == 'administrator'){
