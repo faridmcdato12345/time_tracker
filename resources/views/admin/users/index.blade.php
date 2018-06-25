@@ -9,6 +9,15 @@
     </ol>
 @endsection
 @section('main-content')
+    @if(Session::has('deleted_user'))
+        <p class="bg-danger" style="font-weight: bold;font-size: 16px;padding: 10px 10px;">{{session('deleted_user')}}</p>
+    @endif
+    @if(Session::has('created_user'))
+        <p class="bg-success" style="font-weight: bold;font-size: 16px;padding: 10px 10px;">{{session('created_user')}}</p>
+    @endif
+    @if(Session::has('updated_user'))
+        <p class="bg-primary" style="font-weight: bold;font-size: 16px;padding: 10px 10px;">{{session('updated_user')}}</p>
+    @endif
     <table class="table table-striped">
         <thead>
         <tr>
@@ -34,8 +43,14 @@
                     <td>{{$user->created_at->diffForHumans()}}</td>
                     <td>{{$user->updated_at->diffForHumans()}}</td>
                     <td>
-                        <a href="{{route('users',)}}" class="btn btn-danger" data-toggle="tooltip" title="Delete User!"><i class="fa fa-times"></i></a>
-                        <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary" data-toggle="tooltip" title="Edit User"><i class="fa fa-edit"></i></a>
+                        {{--<a href="#" class="btn btn-danger" data-toggle="tooltip" title="Delete User!"><i class="fa fa-times"></i></a>--}}
+                       {!! Form::open(['method'=>'DELETE','action'=>['AdminUsersController@destroy', $user->id],'class'=>'deleteButtonUsers']) !!}
+                           {{--<div class="form-group">--}}
+                               {{ Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-warning btn-sm', 'data-toggle'=>'tooltip', 'title'=>'Delete User'] )  }}
+                           {{--</div>--}}
+                       {!! Form::close() !!}
+
+                        <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Edit User"><i class="fa fa-edit"></i></a>
                     </td>
                 </tr>
             @endforeach
