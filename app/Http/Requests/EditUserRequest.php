@@ -27,6 +27,7 @@ class EditUserRequest extends FormRequest
             'name'=>'required',
             'email'=>'required',
             'user_type'=>'required',
+            'photo_id'=>'required',
         ];
     }
 }

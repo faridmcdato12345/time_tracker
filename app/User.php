@@ -39,4 +39,11 @@ class User extends Authenticatable
     public function getNameAttribute($name){
         return strtoupper($name);
     }
+
+    public function isAdmin(){
+        if($this->role->name == 'administrator'){
+            return true;
+        }
+        return false;
+    }
 }
