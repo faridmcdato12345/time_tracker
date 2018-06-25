@@ -34,7 +34,7 @@
                     <td>{{$user->created_at->diffForHumans()}}</td>
                     <td>{{$user->updated_at->diffForHumans()}}</td>
                     <td>
-                        <button class="btn btn-danger" data-toggle="tooltip" title="Delete User!"><i class="fa fa-times"></i></button>
+                        <a href="{{route('users',)}}" class="btn btn-danger" data-toggle="tooltip" title="Delete User!"><i class="fa fa-times"></i></a>
                         <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary" data-toggle="tooltip" title="Edit User"><i class="fa fa-edit"></i></a>
                     </td>
                 </tr>
