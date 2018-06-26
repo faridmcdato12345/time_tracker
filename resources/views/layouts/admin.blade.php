@@ -206,8 +206,8 @@
                     <a href="#">
                         <i class="fa fa-user"></i> <span>Users</span>
                         <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{url('/admin/users')}}"><i class="fa fa-eye"></i> View Users</a></li>
@@ -219,12 +219,12 @@
                         <i class="fa fa-users"></i>
                         <span>Clients</span>
                         <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="../charts/chartjs.html"><i class="fa fa-eye"></i> View Clients</a></li>
-                        <li><a href="../charts/morris.html"><i class="fa fa-list"></i> Create Client</a></li>
+                        <li><a href="{{url('/admin/clients')}}"><i class="fa fa-eye"></i> View Clients</a></li>
+                        <li><a href="{{url('/admin/clients/create')}}"><i class="fa fa-list"></i> Create Client</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -236,8 +236,8 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="../UI/general.html"><i class="fa fa-eye"></i> View Subscriptions</a></li>
-                        <li><a href="../UI/icons.html"><i class="fa fa-list"></i> Create Subscription</a></li>
+                        <li><a href="{{url('admin/subscriptions')}}"><i class="fa fa-eye"></i> View Subscriptions</a></li>
+                        <li><a href="{{url('admin/subscriptions/create')}}"><i class="fa fa-list"></i> Create Subscription</a></li>
                     </ul>
                 </li>
                 <li>

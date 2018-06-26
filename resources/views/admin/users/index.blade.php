@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('header-content')
     <h1>
-        View all users
+        User List
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-user-circle"></i> Users</a></li>
@@ -18,6 +18,9 @@
     @if(Session::has('updated_user'))
         <p class="bg-primary" style="font-weight: bold;font-size: 16px;padding: 10px 10px;">{{session('updated_user')}}</p>
     @endif
+    @if(Session::has('updated_status_user'))
+        <p class="bg-primary" style="font-weight: bold;font-size: 16px;padding: 10px 10px;">{{session('updated_status_user')}}</p>
+    @endif
     <table class="table table-striped">
         <thead>
         <tr>
@@ -26,6 +29,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
+            <th>Status</th>
             <th>Created at</th>
             <th>Updated at</th>
             <th>Action</th>
@@ -40,6 +44,26 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role ? $user->role->name : 'Roles are not created yet.Please create roles.'}}</td>
+                    <td>
+                        @if($user->status == '1')
+                            {!! Form::open(['method'=>'PATCH','action'=>['AdminUsersController@is_Active',$user->id],'files'=>true]) !!}
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-sm disabled">Active</button>
+                                    {{ Form::hidden('status', '0') }}
+                                    {{ Form::submit('Inactive',['class'=>'btn btn-danger btn-sm'])  }}
+                                </div>
+                            {!! Form::close() !!}
+                        @endif
+                        @if($user->status != '1')
+                            {!! Form::open(['method'=>'PATCH','action'=>['AdminUsersController@is_Active',$user->id],'files'=>true]) !!}
+                                <div class="form-group">
+                                    {{ Form::hidden('status', '1') }}
+                                    {{ Form::submit('Active',['class'=>'btn btn-primary btn-sm'])  }}
+                                    <button class="btn btn-danger btn-sm disabled">In Active</button>
+                                </div>
+                            {!! Form::close() !!}
+                        @endif
+                    </td>
                     <td>{{$user->created_at->diffForHumans()}}</td>
                     <td>{{$user->updated_at->diffForHumans()}}</td>
                     <td>

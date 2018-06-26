@@ -108,19 +108,17 @@ class AdminUsersController extends Controller
         $user = User::findOrFail($id);
 
         if(trim($request->password) == ''){
-            $request->except('password');
-            $input = $request->all();
+            $input = $request->except('password');
         }
         else{
-            $input = $request->all();
             $input['password'] = bcrypt($request->password);
+            $input = $request->all();
         }
         if($file = $request->file('photo_id')){
             $name = time().$file->getClientOriginalName();
             $file->move('images',$name);
             $photo = Photo::create(['path'=>$name]);
             $input['photo_id']=$photo->id;
-//            return $photo->id;
         }
         $user->update($input);
         Session::flash('updated_user',$user->name.' has been updated');
@@ -139,6 +137,15 @@ class AdminUsersController extends Controller
         unlink(public_path()."\\".$user->photo->path);
         $user->delete();
         Session::flash('deleted_user',$user->name.' has been deleted');
+        return redirect('admin/users');
+    }
+    public function is_Active(Request $request, $id){
+        $user=User::findOrFail($id);
+        $user->status = $request->status;
+//        return $input;
+        $user_status = $user->status == '1' ? 'Active' : 'In Active';
+        $user->save();
+        Session::flash('updated_status_user',$user->name.' is now '. $user_status);
         return redirect('admin/users');
     }
 }

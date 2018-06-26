@@ -16,4 +16,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware'=>'admin'], function (){
     Route::resource('admin/users','AdminUsersController');
+    Route::resource('admin/clients', 'AdminClientsController');
+    Route::resource('admin/subscriptions', 'AdminSubscriptionsController');
+    Route::patch('admin/users/is_active/{id}','AdminUsersController@is_Active');
 });
