@@ -250,7 +250,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../mailbox/mailbox.html">
+                    <a href="{{url('admin/time_tracker')}}">
                         <i class="fa fa-clock-o"></i> <span>Time track</span>
                         {{--<span class="pull-right-container">--}}
                         {{--<small class="label pull-right bg-yellow">12</small>--}}

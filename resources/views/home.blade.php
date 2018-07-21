@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row">
@@ -13,8 +12,27 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    {!! Form::open(['method'=>'POST','action'=>['TimeTrackerController@store']]) !!}
+                    <div class="form-group">
+                        {!! Form::label('client_id','Client:') !!}
+                        @if($client)
+                            <select name="client" class="form-control">
+                                @foreach($client as $clients)
+                                    <option value="{{$clients->id}}">{{$clients->name}}</option>
+                                @endforeach
+                            </select>
+                            <br>
+                            <div class="form-group">
+                                {!! Form::label('name','Name:') !!}
+                                {!! Form::text('name',null,['class'=>'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::submit('Create User',['class'=>'form-control btn btn-primary']) !!}
+                            </div>
+                        @endif
+                    </div>
+                    {!! Form::close() !!}
 
-                    You are logged in!
                 </div>
             </div>
         </div>

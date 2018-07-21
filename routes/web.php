@@ -9,8 +9,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', function () {
-    return view('auth/login');
+    return redirect('/home');
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -18,5 +22,6 @@ Route::group(['middleware'=>'admin'], function (){
     Route::resource('admin/users','AdminUsersController');
     Route::resource('admin/clients', 'AdminClientsController');
     Route::resource('admin/subscriptions', 'AdminSubscriptionsController');
+    Route::resource('admin/time_tracker', 'TimeTrackerController');
     Route::patch('admin/users/is_active/{id}','AdminUsersController@is_Active');
 });
