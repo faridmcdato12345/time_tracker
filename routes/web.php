@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return redirect('/home');
 });
-Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home/store', 'HomeController@store')->name('home.store');
+Auth::routes();
+
 Route::group(['middleware'=>'admin'], function (){
     Route::resource('admin/users','AdminUsersController');
     Route::resource('admin/clients', 'AdminClientsController');

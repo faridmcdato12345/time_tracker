@@ -20,6 +20,7 @@
     },
     "dependencies": {
         "adminlte": "^2.4.1",
+        "countimer": "^1.0.1",
         "font-awesome": "^4.7.0"
     }
 }

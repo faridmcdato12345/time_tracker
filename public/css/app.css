@@ -18100,8 +18100,13 @@ button.close {
   overflow: visible;
   clip: auto;
 }
-.deleteButtonUsers{
-  display: inline-block;
-}
 
+.timer {
+  min-height: 125px;
+  text-align: center;
+  background: #fff;
+  font-size: 100px;
+  font-weight: bold;
+  font-family: monospace;
+}
 

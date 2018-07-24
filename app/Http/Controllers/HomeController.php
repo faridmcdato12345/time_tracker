@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\TimeTrack;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function redirect;
@@ -36,5 +37,13 @@ class HomeController extends Controller
                 return view('home', compact('client'));
             }
         }
+    }
+    public function store(Request $request)
+    {
+        $user = Auth::user()->id;
+        $input = $request->all();
+        $input['user_id']= $user;
+        TimeTrack::create($input);
+        return redirect('home');
     }
 }
