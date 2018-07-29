@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\TimeTrack;
+use Carbon\Carbon;
 use function compact;
+use function explode;
+use function gettype;
 use Illuminate\Http\Request;
 use function redirect;
 
@@ -40,8 +44,7 @@ class TimeTrackerController extends Controller
      */
     public function store(Request $request)
     {
-        $clientId = $request->client;
-        return $this->show($clientId);
+        return $this->show($request->client,$request->dateFrom,$request->dateTo);
     }
 
     /**
@@ -50,10 +53,14 @@ class TimeTrackerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$dateFrom,$dateTo)
     {
-        $client = Client::findOrFail($id);
-        return view('admin.time_tracked.show',compact('client'));
+        $fromDate = Carbon::parse($dateFrom);
+        $toDate = Carbon::parse($dateTo);
+        $client = TimeTrack::where('client_id','=',$id)->whereBetween('created_at',[$fromDate,$toDate])->get();
+        $theClient = Client::findOrFail($id);
+        return view('admin.time_tracked.show',compact('client','theClient'));
+//        return $client."sum: ".$carbonTime;
     }
     /**
      * Show the form for editing the specified resource.

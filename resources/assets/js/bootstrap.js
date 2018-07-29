@@ -13,7 +13,7 @@ try {
 } catch (e) {}
 
 require("adminlte");
-require("countimer")
+require("countimer");
 require("moment");
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

@@ -29,7 +29,7 @@
                 {!! Form::date('dateTo', \Carbon\Carbon::now()->format('D/M/Y'), ['class' => 'form-control', 'required' => true]) !!}
             </div>
             <div class="form-group">
-                {!! Form::submit('Create User',['class'=>'form-control btn btn-primary']) !!}
+                {!! Form::submit('Show Record',['class'=>'form-control btn btn-primary']) !!}
             </div>
         @endif
     </div>

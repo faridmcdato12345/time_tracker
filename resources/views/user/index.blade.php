@@ -23,24 +23,6 @@
                                     </select>
                                 @endif
                             </div>
-                        {{--<div class="form-group">--}}
-                        {{--{!! Form::label('timer','Timer:') !!}--}}
-                        {{--{!! Form::text('timer',"00:00:00",['class'=>'timer form-control','readonly']) !!}--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                        {{--<div class="row">--}}
-                        {{--<div class="col-sm-6">--}}
-                        {{--<a href="#" class="start btn btn-success form-control" id="start"><i class="fa fa-play"></i></a>--}}
-                        {{--<a href="#" class="start btn btn-danger form-control" id="stop" style="display:none;"><i class="fa fa-stop"></i></a>--}}
-                        {{--<a href="#" class="start btn btn-success form-control" id="start1" style="display:none;"><i class="fa fa-play"></i></a>--}}
-                        {{--</div>--}}
-                        {{--<div class="col-sm-6">--}}
-                        {{--<a href="#" class="btn btn-warning pause form-control" id="pause"><i class="fa fa-pause"></i></a>--}}
-                        {{--<a href="#" class="btn btn-warning resume form-control" id="resume" style="display: none;"><i class="fa fa-play"></i></a>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<input class="timer form-control" type="text" value="" name="timer" />--}}
                             <div class="form-group">
                                 {!! Form::submit('Create User',['class'=>'form-control btn btn-primary']) !!}
                             </div>
